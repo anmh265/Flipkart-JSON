@@ -1,0 +1,575 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: roboto-regular;
+    src: url('https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/fonts/roboto-regular-webfont.woff2');
+}
+@font-face {
+    font-family: roboto-medium;
+    src: url('https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/fonts/roboto-medium-webfont.woff2');
+}
+body{
+    background-color: #f1f3f6;
+}
+header{
+    background-color: #2874f0;
+    width: 100%;
+}
+.header-bg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    max-width: 1248px;
+    margin-inline: auto;
+    padding-left: 29px;
+}
+.flipkart-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(7px);
+}
+.flipkart-logo-text{
+    margin-bottom: -8px;
+    transform: translateX(1px);
+}
+.flipkart-logo-text img{
+    width: 75px;
+}
+.flipkart-explore{
+    margin-right: 2px;
+}
+.flipkart-explore a{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 11px;
+    font-style: italic;
+    font-family: roboto-medium;
+    font-weight: normal;
+    color: rgb(240, 240, 240);
+    margin-top: -1px;
+}
+.flipkart-explore span{
+    color: #ffe500;
+    margin-right: -0.5px;
+}
+.flipkart-explore img{
+    width: 10px;
+    margin-right: 1px;
+}
+.input-form{
+    margin-left: 19px;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 2px;
+    transform: translateX(1px);
+}
+.input-form form{
+    height: 36px;
+    width: 564px;
+    display: flex;
+    align-items: center;
+}
+.input-form form input{
+    flex: 1;
+    height: 100%;
+    border: none;
+    padding-inline: 15px;
+    font-size: 14px;
+    font-family: roboto-regular;
+    width: 100%;
+}
+.input-form form button{
+    height: 100%;
+    width: 44px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-2px, 1px);
+    cursor: pointer;
+}
+.flipkart-login-section{
+    display: flex;
+    align-items: center;
+    transform: translateX(27px);
+}
+.flipkart-login-btn, .become-seller, .flipkart-more, .flipkart-cart{
+    margin-inline: 20px;
+    cursor: pointer;
+}
+.flipkart-login-btn{
+    margin-bottom: 2px;
+}
+.flipkart-login-btn button{
+    padding: 5px 40px;
+    color: #2874f0;
+    border: 1px solid #dbdbdb;
+    background-color: white;
+    font-weight: 500;
+    font-family: roboto-medium;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    height: 31px;
+    cursor: pointer;
+}
+.become-seller a, .flipkart-more a, .flipkart-cart a{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+    font-family: roboto-medium;
+}
+.flipkart-more span{
+    display: inline-block;
+    margin-left: 5px;
+}
+.flipkart-more svg{
+    transform: rotate(270deg);
+}
+.flipkart-cart{
+    transform: translateX(-1px);
+}
+.flipkart-cart a{
+    display: flex;
+    align-items: center;
+}
+.flipkart-cart svg{
+    width: 16px;
+    height: 16px;
+    margin-inline: 8px;
+}
+.header-nav{
+    height: 40px;
+    background-color: white;
+    box-shadow: 0 1px 1px 0 rgb(0, 0, 0, 0.16);
+}
+.header-nav nav{
+    max-width: 1248px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transform: translateX(5px);
+}
+.header-nav nav span{
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: roboto-medium;
+    font-weight: 500;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.header-nav nav span:hover{
+    color: #2874f0;
+}
+.header-nav nav span svg{
+    transform: rotate(270deg);
+    fill: #878787;
+    opacity: 0.5;
+    margin-left: 8px;
+}
+main{
+    max-width: 1680px;
+    min-width: 978px;
+    margin-inline: auto;
+    padding: 8px;
+    display: flex;
+}
+.main-grabdeals-filter{
+    padding-right: 10px;
+}
+.grab-best-mobile{
+    width: 270px;
+    box-shadow: 0 1px 8px 0 rgb(0, 0, 0, 0.06);
+    background-color: white;
+    margin-bottom: 10px;
+}
+.best-mobile-img{
+    height: 144.5px;
+}
+.best-mobile-img img{
+    width: 100%;
+}
+.best-mobile-text{
+    padding: 12px 16px 15px 16px;
+    border-top: 1px solid #f0f0f0;
+}
+.best-mobile-main-text{
+    font-size: 16px;
+    line-height: 1.2;
+    font-family: roboto-medium;
+    margin-top: 2px;
+}
+.best-mobile-sub-text{
+    font-size: 12px;
+    line-height: 1.4;
+    font-family: roboto-regular;
+    margin-top: 2px;
+}
+.filter{
+    width: 270px;
+    background-color: white;
+    box-shadow: 0 1px 8px 0 rgb(0, 0, 0, 0.06);
+    border-bottom: 1px solid #f0f0f0;
+}
+.filter h2{
+    padding: 18px 16px 14px;
+    font-size: 18px;
+    font-family: roboto-medium;
+    font-weight: 500;
+    border-bottom: 1px solid #f0f0f0;
+    letter-spacing: 0.03ch;
+}
+.filter-categories{
+    padding: 17px 17px 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.filter-categories p{
+    font-size: 12px;
+    color: #212121;
+    font-family: roboto-medium;
+    margin-bottom: 7px;
+    margin-left: -1px;
+}
+.categories-mobiles-accessories{
+    padding-block: 5px;
+    color: #878787;
+}
+.categories-text{
+    font-size: 14px;
+    font-family: roboto-regular;
+}
+.categories-mobile{
+    font-size: 14px;
+    font-family: roboto-medium;
+    padding-block: 7px;
+    margin-left: 14px;
+}
+.categories-price{
+    padding: 17px 16px 16px 16px;
+}
+.categories-price p{
+    font-size: 13px;
+    line-height: 1.4;
+    font-family: roboto-medium;
+    letter-spacing: 0.04ch;
+    margin-bottom: 5px;
+}
+.price-graph{
+    height: 23px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+}
+.graph-one, .graph-two, .graph-three, .graph-four, .graph-five{
+    height: 100%;
+    width: 47.362px;
+    background-color: #e0e0e0;
+}
+.graph-five{
+    height: 19.875px;
+}
+.price-range{
+    width: 100%;
+    height: 6px;
+    background-color: #2874f0;
+    position: relative;
+}
+.price-range::before{
+    content: "";
+    position: absolute;
+    height: 11px;
+    width: 11px;
+    left: -6px;
+    top: -4px;
+    border-radius: 50%;
+    border: 1px solid #bababa;
+    background-color: white;
+}
+.price-range::after{
+    content: "";
+    position: absolute;
+    height: 11px;
+    width: 11px;
+    right: -5px;
+    top: -4px;
+    border-radius: 50%;
+    border: 1px solid #bababa;
+    background-color: white;
+}
+.price-graph-dots{
+    transform: translateY(-2px);
+}
+.price-graph-dots span{
+    width: 43.6px;
+    display: inline-block;
+    text-align: left;
+    color: #c2c2c2;
+}
+.price-graph-dots span:last-child{
+    width: 0px;
+}
+.price-min-max{
+    margin: 6px -4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.price-min, .price-max{
+    height: 24px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    font-size: 14px;
+    font-family: roboto-regular;
+    color: #212121;
+    appearance: none;
+    background-image: url(./Assets/solid-down-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+    padding-inline: 4px;
+    outline: none;
+}
+.price-min{
+    width: 99px;
+}
+.price-min-max span{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 12px;
+    font-size: 14px;
+    color: #878787;
+    font-family: roboto-regular;
+}
+.price-max{
+    margin-left: 1.5px;
+    width: 106px;
+}
+.main-brand{
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+.main-brand-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+.main-brand p{
+    font-size: 13px;
+    line-height: 1.4;
+    font-family: roboto-medium;
+    display: flex;
+    justify-content: space-between;
+}
+.main-brand svg{
+    height: 11px;
+    width: 6px;
+    transform: rotate(90deg);
+}
+.brand-checkbox{
+    padding: 0 16px 16px;
+}
+.brand-checkbox label{
+    font-size: 14px;
+    font-family: roboto-regular;
+    color: #212121;
+    cursor: pointer;
+    padding-left: 6px;
+}
+.flipkart-assured{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: white;
+}
+.flipkart-assured-logo input{
+    transform: translateY(-4px);
+}
+.flipkart-assured-logo label{
+    padding-left: 6px;
+}
+.flipkart-assured-logo label img{
+    height: 21px;
+    transform: translateY(3px);
+}
+.flipkart-assured span{
+    height: 16px;
+    width: 16px;
+    color: #878787;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    font-size: 11px;
+    display: inline-block;
+    text-align: center;
+}
+.customer-rating{
+    padding: 16px;
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+.customer-rating-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+}
+.customer-rating-text p{
+    font-size: 13px;
+    font-family: roboto-medium;
+    letter-spacing: 0.3px;
+}
+.customer-rating-text svg{
+    width: 6px;
+    height: 11px;
+    transform: rotate(90deg);
+}
+.star-rating{
+    font-size: 14px;
+    color: #212121;
+    font-family: roboto-regular;
+}
+.star-rating label{
+    padding-left: 7px;
+}
+.four-star{
+    margin-bottom: 14px;
+}
+.three-star{
+    padding-bottom: 16px;
+}
+.gst-invoice{
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+.gst-invoice p{
+    font-size: 13px;
+    font-family: roboto-medium;
+}
+.gst-invoice svg{
+    width: 6px;
+    height: 11px;
+    transform: rotate(-90deg);
+}
+.mobile-ram{
+    padding: 16px;
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+.mobile-ram-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mobile-ram-text p{
+    font-size: 13px;
+    font-family: roboto-medium;
+    color: #212121;
+    padding-bottom: 16px;
+}
+.mobile-ram-text span svg{
+    width: 6px;
+    height: 11px;
+    transform: rotate(90deg);
+}
+.ram-size-list{
+    font-size: 14px;
+    font-family: roboto-regular;
+    color: #212121;
+}
+.ram-size-list label{
+    padding-left: 7px;
+}
+.ram-size{
+    padding-block: 6px;
+}
+.mobile-spec{
+    padding: 16px;
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mobile-spec p{
+    font-size: 13px;
+    font-family: roboto-medium;
+}
+.mobile-spec svg{
+    width: 6px;
+    height: 11px;
+    transform: rotate(-90deg);
+}
+.need-help{
+    text-align: center;
+    padding-top: 30px;
+}
+.help{
+    font-size: 14px;
+    font-family: roboto-regular;
+    color: #212121;
+}
+.help_decide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 20px;
+}
+.decide{
+    font-size: 18px;
+    color: #2874f0;
+    font-family: roboto-regular;
+}
+.help_decide svg{
+    transform: rotate(180deg);
+    height: 12px;
+    width: 6px;
+    margin-left: 4px;
+}
+.mobile-main-section{
+    flex: 1 0;
+    background-color: white;
+}
+.mi-category-section{
+    padding: 12px 16px 0;
+}
+.navigation-category-section{
+    display: inline-flex;
+    font-size: 12px;
+    font-family: roboto-regular;
+    align-items: center;
+    margin-right: -4px;
+}
+.navigation-category-section a{
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    color: #878787;
+}
+.navigation-category-section svg{
+    height: 7px;
+    width: 20px;
+    transform: rotate(180deg);
+}
