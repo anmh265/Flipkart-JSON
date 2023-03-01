@@ -631,3 +631,172 @@ main{
     font-family: roboto-medium;
     cursor: default;
 }
+.phone-card{
+    display: flex;
+    padding: 24px 0 30px 24px;
+    border-top: 1px solid #f0f0f0;
+    text-decoration: none;
+    width: 100%;
+}
+.phone-info{
+    display: flex;
+    width: 65%;
+}
+.phone-image-compare{
+    position: relative;
+}
+.phone-image{
+    height: 200px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.phone-image img{
+    height: 100%;
+}
+.phone-compare{
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+}
+.phone-compare input[type = checkbox]{
+    width: 14px;
+    height: 14px;
+    background: transparent;
+}
+.phone-compare label{
+    margin-left: 8px;
+    font-size: 14px;
+    color: #212121;
+    font-family: roboto-regular;
+}
+.add-wishlist{
+    position: absolute;
+    top: 2px;
+    right: -8px;
+    z-index: 50;
+}
+.add-wishlist svg{
+    fill:#c2c2c2;
+}
+.phone-specs{
+    padding-left: 25px;
+    color: #212121;
+    width: 100%;
+}
+.phone-model-name{
+    font-size: 18px;
+    font-family: roboto-medium;
+    transform: translateY(-2px);
+}
+.phone-rating{
+    margin-top: 6px;
+    transform: translateY(-3px);
+}
+.phone-rating-star{
+    display: inline-block;
+    background-color: #388e3c;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: roboto-medium;
+    color: white;
+}
+.rating{
+    padding: 3px 4px 2px 6px;
+    display: inline-block;
+}
+.rating img{
+    height: 10px;
+    margin-left: -1px;
+}
+.viewer-rating{
+    display: inline-block;
+    font-size: 14px;
+    color: #878787;
+    margin-left: 9px;
+    font-family: roboto-medium;
+    transform: translate(-1px, -1px);
+}
+.internal-spec{
+    margin-top: 10px;
+}
+.spec-list{
+    margin-top: 5px;
+    color: #212121;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: roboto-regular;
+    list-style: none;
+}
+.spec-list li::before{
+    content: '•';
+    width: 2px;
+    display: inline-block;
+    color: #c2c2c2;
+    padding-right: 11px;
+}
+.phone-price-container{
+    padding-left: 28px;
+}
+.phone-price{
+    display: inline-block;
+    font-family: roboto-medium;
+    transform: translateY(-4px);
+}
+.phone-actual-price{
+    font-size: 25px;
+    color: #212121;
+    font-family: roboto-medium;
+    display: block;
+    margin-right: 21px;
+    transform: translateY(1px);
+}
+.phone-mrp{
+    margin-top: 8px;
+    color: #878787;
+    text-decoration: line-through;
+    font-size: 14px;
+    font-family: roboto-regular;
+    display: inline-block;
+}
+.phone-discount{
+    display: inline-block;
+    font-size: 13px;
+    color: #388e3c;
+    letter-spacing: -0.2px;
+    margin-left: 8px;
+}
+.phone-free-delivery{
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgb(0,0,0);
+    font-family: roboto-regular;
+}
+.flipkart-assured-phone{
+    display: inline-block;
+    height: 21px;
+    vertical-align: top;
+}
+.flipkart-assured-phone img{
+    height: 100%;
+}
+.phone-exchange-discount{
+    margin-top: 1px;
+    font-size: 14px;
+    color: rgb(0,0,0);
+    font-family: roboto-regular;
+}
+.phone-exchange-discount span{
+    font-family: roboto-medium;
+    font-weight: 700;
+    display: inline-block;
+}
+.phone-bank-offer{
+    margin-top: 5px;
+    color: rgb(38, 165, 65);
+    font-size: 14px;
+    font-family: roboto-medium;
+    font-weight: 700;
+}
