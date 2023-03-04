@@ -70,8 +70,6 @@ function sortPhoneBy() {
     item.addEventListener("click", () => {
       removeActive(sortCategory);
       item.classList.add("active");
-
-      sort(item);
     });
   });
 }
@@ -381,13 +379,20 @@ function createPhoneCard(dataList) {
             ${data.rating}
             <img src = "${starImage}" alt="">
         `;
+
+    if (data.rating >= 3.5) {
+      ratingStarContainer.classList.add("green");
+    } else if (data.rating >= 2) {
+      ratingStarContainer.classList.add("amber");
+    } else {
+      ratingStarContainer.classList.add("red");
+    }
     ratingStarContainer.appendChild(rating);
 
     ratingMainContainer.appendChild(ratingStarContainer);
 
     const viewerRating = document.createElement("span");
     viewerRating.classList.add("viewer-rating");
-    // console.log(data.customer_rating)
     viewerRating.innerHTML = `${data.customer_rating.toLocaleString(
       "en-IN"
     )} Ratings & ${data.reviews.toLocaleString("en-IN")} Reviews`;
@@ -496,14 +501,60 @@ function calculateActualPrice(mrp, discount) {
   return Math.round(mrp * (1 - discount / 100));
 }
 
+/////////////FILTERING SECTION////////////////////
 
 let dataArr = [];
 
-//////Filter by brand/////
+///////Price sort////////
+function priceSort() {
+  let minVal = 0;
+  let maxVal = 0;
+  const minPrice = document.querySelector(".price-min");
+  const maxPrice = document.querySelector(".price-max");
 
+  minPrice.addEventListener("change", () => {
+    getWithinRange(maxPrice, minPrice);
+  });
+
+  maxPrice.addEventListener("change", () => {
+    getWithinRange(maxPrice, minPrice);
+  });
+}
+priceSort();
+
+function getWithinRange(max, min) {
+  minVal = +min.value;
+  maxVal = max.value !== "Max" ? +max.value : "Max";
+
+  if (maxVal === "Max") {
+    if(dataArr.length){
+      dataArr = dataArr.filter(item => {
+        return calculateActualPrice(item.mrp, item.discount) >= minVal;  
+      })
+    } else {
+      dataArr = phoneListData.filter((item) => {
+        return calculateActualPrice(item.mrp, item.discount) >= minVal;
+      });
+    }
+    createPhoneCard(dataArr);
+  } else {
+    if(dataArr.length){
+      dataArr = dataArr.filter(item => {
+        return calculateActualPrice(item.mrp, item.discount) >= minVal;  
+      })
+    } else {
+      dataArr = phoneListData.filter((item) => {
+        return calculateActualPrice(item.mrp, item.discount) >= minVal;
+      });
+    }
+    createPhoneCard(dataArr);
+  }
+}
+
+//////Filter by brand/////
 function brandSelection() {
   const inputBoxes = document.querySelectorAll(
-    ".brand-checkbox input[type=checkbox"
+    ".brand-checkbox input[type=checkbox]"
   );
   inputBoxes.forEach((input) => {
     input.addEventListener("click", function (e) {
@@ -511,7 +562,6 @@ function brandSelection() {
         const data = phoneListData.filter(
           (item) => item.brand === e.target.value
         );
-        // console.log(data)
         dataArr.push(...data);
       } else {
         dataArr = dataArr.filter((item) => e.target.value !== item.brand);
@@ -523,9 +573,7 @@ function brandSelection() {
 }
 brandSelection();
 
-
 //////Filter by Flipkart Assured///////
-
 function flipkartAssuredSort() {
   const checkbox = document.getElementById("f-assured");
 
@@ -539,42 +587,42 @@ function flipkartAssuredSort() {
         // console.log(dataArr)
       }
     }
-
     createPhoneCard(dataArr);
   });
 }
 flipkartAssuredSort();
 
+///////Filter by rating///////
+function sortByRating() {
+  const fourStar = document.getElementById("four-star");
+  const threeStar = document.getElementById("three-star");
 
-///////Filter by price///////
-
-function priceSort() {
-  let minVal = 0;
-  let maxVal = 0;
-  let data;
-  const minPrice = document.querySelector(".price-min");
-  const maxPrice = document.querySelector(".price-max");
-
-  if (minPrice.value === "Min" && maxPrice.value === "Max") {
-    createPhoneCard(phoneListData);
-  }
-
-  minPrice.addEventListener("change", () => {
-    minVal = minPrice.value !== "Min" ? minPrice.value : 0;
-    data = phoneListData.filter((item) => {
-      return calculateActualPrice(item.mrp, item.discount) >= minVal;
-    });
-    createPhoneCard(data);
+  fourStar.addEventListener("change", () => {
+    if (fourStar.checked) {
+      if (dataArr.length) {
+        dataArr = dataArr.filter((item) => {
+          return item.rating >= +fourStar.value;
+        });
+      } else {
+        dataArr = phoneListData.filter((item) => {
+          return item.rating >= +fourStar.value;
+        });
+      }
+      createPhoneCard(dataArr);
+    }
   });
 
-  maxPrice.addEventListener("change", () => {
-    maxVal = maxPrice.value;
-    // maxVal = maxPrice.value !== 'Max' ? maxPrice.value :
-    data = phoneListData.filter((item) => {
-      return calculateActualPrice(item.mrp, item.discount) <= maxVal;
-    });
-    createPhoneCard(data);
+  threeStar.addEventListener("change", () => {
+    if (threeStar.checked) {
+      dataArr = phoneListData.filter((item) => {
+        return item.rating >= +threeStar.value;
+      });
+      // console.log(dataArr)
+    }
+    createPhoneCard(dataArr);
   });
 }
-priceSort();
+sortByRating();
 
+// let arr=phoneListData.filter(item=>item.mrp>10000)
+// console.log(arr);
