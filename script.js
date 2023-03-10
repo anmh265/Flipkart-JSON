@@ -1,3 +1,5 @@
+"use strict";
+
 const chevronDown = `<svg width="4.7" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="RWB9Wm"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"  class="_2JzwqO"></path></svg>`;
 
 const wishlist =
@@ -9,44 +11,22 @@ const starImage =
 const flipkartAssuredImg =
   "https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png";
 
-const categoryNavBarData = [
-  {
-    label: "Electronics",
-    category: true,
-  },
-  {
-    label: "TVs & Appliances",
-    category: true,
-  },
-  {
-    label: "Men",
-    category: true,
-  },
-  {
-    label: "Women",
-    category: true,
-  },
-  {
-    label: "Baby & Kids",
-    category: true,
-  },
-  {
-    label: "Home & Furniture",
-    category: true,
-  },
-  {
-    label: "Sports, Books & More",
-    category: true,
-  },
-  {
-    label: "Flights",
-    category: false,
-  },
-  {
-    label: "Offer Zone",
-    category: false,
-  },
-];
+const URL =
+  "https://raw.githubusercontent.com/anmh265/Flipkart-JSON/main/jsonData.json";
+
+async function fetchData(urlData) {
+  const res = await fetch(urlData);
+  const data = await res.json();
+
+  createNavBar(data.categoryNavBarData);
+  createPhoneCard(data.phoneListData);
+
+  setUpFilter(data.phoneListData);
+
+  // readMinValueOnChange(data.phoneListData)l
+}
+
+fetchData(URL);
 
 function createNavBar(data) {
   const categoryNavBar = document.getElementById("category-nav");
@@ -60,8 +40,6 @@ function createNavBar(data) {
     categoryNavBar.appendChild(spanElement);
   });
 }
-
-createNavBar(categoryNavBarData);
 
 function sortPhoneBy() {
   const sortCategory = document.querySelectorAll(".sort");
@@ -80,236 +58,6 @@ function removeActive(sortList) {
     item.classList.remove("active");
   });
 }
-
-const phoneListData = [
-  {
-    brand: "APPLE",
-    model: "Apple iPhone SE (White, 256 GB) (Includes EarPods, Power Adapter)",
-    img_URL:
-      "https://rukminim1.flixcart.com/image/312/312/k9loccw0/mobile/6/b/z/apple-iphone-se-mxd12hn-a-original-imafrcqf9nze6evk.jpeg?q=70",
-    rating: 4.5,
-    customer_rating: 153891,
-    reviews: 12060,
-    f_assured: true,
-    spec: [
-      {
-        label: {
-          RAM: "",
-          ROM: "256 GB",
-        },
-      },
-      {
-        label: "11.94 cm (4.7 inch) Retina HD Display",
-      },
-      {
-        label: "12MP Rear Camera | 7MP Front Camera",
-      },
-      {
-        label: "A13 Bionic Chip with 3rd Gen Neural Engine Processor",
-      },
-      {
-        label: "Water and Dust Resistant (1 meter for Upto 30 minutes, IP67)",
-      },
-      {
-        label: "Fast Charge Capable",
-      },
-      {
-        label:
-          "Wireless charging (Works with Qi Chargers | Qi Chargers are Sold Separately",
-      },
-      {
-        label: "Brand Warranty of 1 Year",
-      },
-    ],
-    mrp: 54900,
-    discount: 25,
-    exchange_discount: 20000,
-    bank_offer: true,
-  },
-  {
-    brand: "APPLE",
-    model: "APPLE iPhone SE (Red, 128 GB)",
-    img_URL:
-      "https://rukminim1.flixcart.com/image/312/312/k9loccw0/mobile/6/8/g/apple-iphone-se-mxvv2hn-a-original-imafrcqmfh4zznmq.jpeg?q=70",
-    rating: 4.5,
-    customer_rating: 153891,
-    reviews: 12060,
-    f_assured: true,
-    spec: [
-      {
-        label: {
-          RAM: "",
-          ROM: "128",
-        },
-      },
-      {
-        label: "11.94 cm (4.7 inch) Retina HD Display",
-      },
-      {
-        label: "12MP Rear Camera | 7MP Front Camera",
-      },
-      {
-        label: "A13 Bionic Chip with 3rd Gen Neural Engine Processor",
-      },
-      {
-        label: "Water and Dust Resistant (1 meter for Upto 30 minutes, IP67)",
-      },
-      {
-        label: "Fast Charge Capable",
-      },
-      {
-        label:
-          "Wireless charging (Works with Qi Chargers | Qi Chargers are Sold Separately",
-      },
-      {
-        label: "Brand Warranty of 1 Year",
-      },
-    ],
-    mrp: 33000,
-    discount: 26,
-    exchange_discount: 20000,
-    bank_offer: true,
-  },
-  {
-    brand: "MI",
-    model: "Redmi 9A Sport (Carbon Black, 32 GB)",
-    img_URL:
-      "https://rukminim1.flixcart.com/image/312/312/xif0q/mobile/j/l/n/-original-imag7chjvhxdhhyh.jpeg?q=70",
-    rating: 2.1,
-    customer_rating: 25191,
-    reviews: 1887,
-    f_assured: false,
-    spec: [
-      {
-        label: {
-          RAM: "2 GB",
-          ROM: "32 GB",
-        },
-      },
-      {
-        label: "16.59 cm (6.53 inch) Display",
-      },
-      {
-        label: "13MP Rear Camera",
-      },
-      {
-        label: "A13 Bionic Chip with 3rd Gen Neural Engine Processor",
-      },
-      {
-        label: "5000 mAh Battery",
-      },
-      {
-        label: "1 Year Warranty",
-      },
-    ],
-    mrp: 8499,
-    discount: 14,
-    exchange_discount: 0,
-    bank_offer: true,
-  },
-  {
-    brand: "MI",
-    model: "REDMI Note 11 Pro (Stealth Black, 128 GB)",
-    img_URL:
-      "https://rukminim1.flixcart.com/image/312/312/xif0q/mobile/m/0/c/-original-imagcvg4ghr3ykge.jpeg?q=70",
-    rating: 4.2,
-    customer_rating: 1187,
-    reviews: 84,
-    f_assured: true,
-    spec: [
-      {
-        label: {
-          RAM: "6 GB",
-          ROM: "128 GB",
-        },
-      },
-      {
-        label: "16.59 cm (6.53 inch) Display",
-      },
-      {
-        label: "108MP Rear Camera",
-      },
-      {
-        label: "5000 mAh Battery",
-      },
-      {
-        label: "12 months",
-      },
-    ],
-    mrp: 19199,
-    discount: 0,
-    exchange_discount: 0,
-    bank_offer: true,
-  },
-  {
-    brand: "SAMSUNG",
-    model: "SAMSUNG Galaxy A03 Core (Onyx, 32 GB)",
-    img_URL:
-      "https://rukminim1.flixcart.com/image/312/312/xif0q/mobile/j/7/q/galaxy-a03-core-sm-a032fck6ins-samsung-original-imagmb5kvceyb2yc.jpeg?q=70",
-    rating: 2.9,
-    customer_rating: 2759,
-    reviews: 240,
-    f_assured: true,
-    spec: [
-      {
-        label: {
-          RAM: "2 GB",
-          ROM: "32 GB",
-        },
-      },
-      {
-        label: "16.51 cm (6.5 inch) Display",
-      },
-      {
-        label: "8MP Rear Camera",
-      },
-      {
-        label: "5000 mAh Battery",
-      },
-      {
-        label: "12 Months brand Warranty , Domestic Only",
-      },
-    ],
-    mrp: 10499,
-    discount: 35,
-    exchange_discount: 0,
-    bank_offer: true,
-  },
-  {
-    brand: "SAMSUNG",
-    model: "SAMSUNG Galaxy S23 Ultra 5G (Phantom Black, 512 GB)",
-    img_URL:
-      "https://rukminim1.flixcart.com/image/312/312/xif0q/mobile/m/l/o/-original-imagmg6gzjf7gggt.jpeg?q=70",
-    rating: 3.5,
-    customer_rating: 99,
-    reviews: 13,
-    f_assured: false,
-    spec: [
-      {
-        label: {
-          RAM: "12 GB",
-          ROM: "512 GB",
-        },
-      },
-      {
-        label: "17.27 cm (6.8 inch) Quad HD+ Display",
-      },
-      {
-        label: "200MP + 10MP + 12MP + 10MP | 12MP Front Camera",
-      },
-      {
-        label: "5000 mAh Battery",
-      },
-      {
-        label: "Qualcomm Snapdragon 8 Gen 2 Processor",
-      },
-    ],
-    mrp: 161999,
-    discount: 16,
-    exchange_discount: 0,
-    bank_offer: false,
-  },
-];
 
 function createPhoneCard(dataList) {
   const mainContainer = document.querySelector(".display-section");
@@ -495,134 +243,511 @@ function createPhoneCard(dataList) {
     mainContainer.appendChild(aTag);
   });
 }
-createPhoneCard(phoneListData);
 
 function calculateActualPrice(mrp, discount) {
   return Math.round(mrp * (1 - discount / 100));
 }
 
-/////////////FILTERING SECTION////////////////////
+function showBrand() {
+  const container = document.querySelector(".main-brand");
+  const clickContainer = document.querySelector(".main-brand-text");
 
-let dataArr = [];
-
-///////Price sort////////
-function priceSort() {
-  let minVal = 0;
-  let maxVal = 0;
-  const minPrice = document.querySelector(".price-min");
-  const maxPrice = document.querySelector(".price-max");
-
-  minPrice.addEventListener("change", () => {
-    getWithinRange(maxPrice, minPrice);
-  });
-
-  maxPrice.addEventListener("change", () => {
-    getWithinRange(maxPrice, minPrice);
+  clickContainer.addEventListener("click", () => {
+    container.classList.toggle("show");
+    // console.log('helo')
   });
 }
-priceSort();
+showBrand();
 
-function getWithinRange(max, min) {
-  minVal = +min.value;
-  maxVal = max.value !== "Max" ? +max.value : "Max";
+function showRating() {
+  const container = document.querySelector(".customer-rating");
+  const clickRatingContainer = document.querySelector(".customer-rating-text");
 
-  if (maxVal === "Max") {
-    if(dataArr.length){
-      dataArr = dataArr.filter(item => {
-        return calculateActualPrice(item.mrp, item.discount) >= minVal;  
-      })
-    } else {
-      dataArr = phoneListData.filter((item) => {
-        return calculateActualPrice(item.mrp, item.discount) >= minVal;
-      });
+  clickRatingContainer.addEventListener("click", () => {
+    container.classList.toggle("show");
+  });
+}
+showRating();
+
+//setting up filter function
+
+function setUpFilter(data) {
+  const checkBoxes = document.querySelectorAll(
+    ".brand-checkbox input[type=checkbox]"
+  );
+  const fourStar = document.querySelector(".four-star input");
+  const threeStar = document.querySelector(".three-star input");
+
+  const minPrice = document.getElementById("price-min");
+  const maxPrice = document.getElementById("price-max");
+
+  const ascContainer = document.getElementById("asc");
+  const descContainer = document.getElementById('desc')
+  const popularityContainer = document.getElementById('popularity')
+
+  const fassuredInput = document.getElementById('f-assured')
+
+  checkBoxes.forEach((box) => {
+    box.addEventListener("click", () => {
+      applyFilter(data);
+    });
+  });
+
+  //event listener for star rating
+  fourStar.addEventListener("click", () => {
+    applyFilter(data);
+  });
+  threeStar.addEventListener("click", () => {
+    applyFilter(data);
+  });
+
+  //event listener for price range
+  minPrice.addEventListener("change", () => {
+    applyFilter(data);
+  });
+  maxPrice.addEventListener("change", () => {
+    applyFilter(data);
+  });
+
+  //event listener for sorting in ascending order
+  ascContainer.addEventListener('click', () => {
+    applyFilter(data)
+  })
+  //event listener for sorting in descending order
+  descContainer.addEventListener('click', () => {
+    applyFilter(data)
+  })
+  //event listener for sorting as per popularity
+  popularityContainer.addEventListener('click', () => {
+    applyFilter(data)
+  })
+
+  //event listener for f-assured filter
+  fassuredInput.addEventListener('click', () => {
+    applyFilter(data)
+  })
+
+    // getPriceRange(data)
+}
+
+//function to read all function values
+function applyFilter(data) {
+  let brandList = [];
+  let ratingList = [];
+
+  const checkBoxes = document.querySelectorAll(
+    ".brand-checkbox input[type=checkbox]"
+  );
+  const fourStar = document.querySelector(".four-star input");
+  const threeStar = document.querySelector(".three-star input");
+
+  const minPrice = document.getElementById("price-min");
+  const maxPrice = document.getElementById("price-max");
+
+  const ascContainer = document.getElementById("asc");
+  const descContainer = document.getElementById('desc')
+  const popularityContainer = document.getElementById('popularity')
+
+  const fassuredInput = document.getElementById('f-assured')
+
+
+  //get brand list
+
+  checkBoxes.forEach((box) => {
+    if (box.checked) {
+      brandList.push(box.value);
     }
-    createPhoneCard(dataArr);
-  } else {
-    if(dataArr.length){
-      dataArr = dataArr.filter(item => {
-        return calculateActualPrice(item.mrp, item.discount) >= minVal;  
-      })
-    } else {
-      dataArr = phoneListData.filter((item) => {
-        return calculateActualPrice(item.mrp, item.discount) >= minVal;
-      });
+  });
+
+  //get star rating list
+
+  if (fourStar.checked) {
+    ratingList.push(+fourStar.value);
+  }
+  if (threeStar.checked) {
+    ratingList.push(+threeStar.value);
+  }
+
+  //get min and max values
+
+  let minVal = +minPrice.value;
+  let maxVal = maxPrice.value !== "Max" ? +maxPrice.value : "Max";
+
+  //modify data as per filter data
+
+  //filter as per brand
+  if (brandList.length) {
+    data = brandFilter(data, brandList);
+  }
+  if (ratingList.length) {
+    data = ratingFilter(data, ratingList);
+  }
+
+  //filter as per min and max price
+  if (minVal) {
+    data = priceFilter(data, minVal, maxVal);
+  }
+  if (maxVal) {
+    data = priceFilter(data, minVal, maxVal);
+  }
+
+  //filter f-assured items
+
+  if(fassuredInput.checked){
+    data = fassuredFilter(data)
+  }
+
+  //filter price ascending
+  if(ascContainer.classList.contains('active')){
+    data = sortAsc(data)
+  }
+  //filter price descending
+  if(descContainer.classList.contains('active')){
+    data = sortDesc(data)
+  }
+  //filter price popularity
+  if(popularityContainer.classList.contains('active')){
+    data = sortPopularity(data)
+  }
+
+  //render the filter data
+  createPhoneCard(data);
+}
+
+
+//function to filter data from list of brands
+function brandFilter(data, brands) {
+  return data.filter((item) => {
+    return brands.includes(item.brand);
+  });
+}
+
+//function to filter data from list of ratings
+function ratingFilter(data, ratings) {
+  return data.filter((item) => {
+    let match = false;
+    for (let i = 0; i < ratings.length; i++) {
+      if (item.rating >= ratings[i]) {
+        match = true;
+        break;
+      }
     }
-    createPhoneCard(dataArr);
+    return match;
+  });
+}
+
+//function to filter data within a range of price
+function priceFilter(data, min, max) {
+  if (max === "Max") {
+    return data.filter((item) => {
+      return calculateActualPrice(item.mrp, item.discount) >= min;
+    });
+  }
+  if (min < max) {
+    return data.filter((item) => {
+      return (
+        calculateActualPrice(item.mrp, item.discount) >= min &&
+        calculateActualPrice(item.mrp, item.discount) <= max
+      );
+    });
   }
 }
 
-//////Filter by brand/////
-function brandSelection() {
-  const inputBoxes = document.querySelectorAll(
-    ".brand-checkbox input[type=checkbox]"
-  );
-  inputBoxes.forEach((input) => {
-    input.addEventListener("click", function (e) {
-      if (e.target.checked) {
-        const data = phoneListData.filter(
-          (item) => item.brand === e.target.value
-        );
-        dataArr.push(...data);
-      } else {
-        dataArr = dataArr.filter((item) => e.target.value !== item.brand);
-      }
+//function to return f-assured items
+function fassuredFilter(data){
+  return data.filter(item => {
+    return item.f_assured
+  })
+}
 
-      createPhoneCard(dataArr);
-    });
+//function to sort data - price ascending
+function sortAsc(data) {
+  return data.sort((a, b) => {
+    return (
+      calculateActualPrice(a.mrp, a.discount) -
+      calculateActualPrice(b.mrp, b.discount)
+    );
   });
 }
-brandSelection();
 
-//////Filter by Flipkart Assured///////
-function flipkartAssuredSort() {
-  const checkbox = document.getElementById("f-assured");
-
-  checkbox.addEventListener("change", () => {
-    if (checkbox.checked) {
-      if (dataArr.length) {
-        dataArr = dataArr.filter((item) => item.f_assured);
-        // console.log(dataArr)
-      } else {
-        dataArr = phoneListData.filter((item) => item.f_assured);
-        // console.log(dataArr)
-      }
-    }
-    createPhoneCard(dataArr);
-  });
+//function to sort data in ascending
+function sortDesc(data){
+  return data.sort((a, b) => {
+    return (calculateActualPrice(b.mrp, b.discount) - calculateActualPrice(a.mrp, a.discount))
+  })
 }
-flipkartAssuredSort();
 
-///////Filter by rating///////
-function sortByRating() {
-  const fourStar = document.getElementById("four-star");
-  const threeStar = document.getElementById("three-star");
-
-  fourStar.addEventListener("change", () => {
-    if (fourStar.checked) {
-      if (dataArr.length) {
-        dataArr = dataArr.filter((item) => {
-          return item.rating >= +fourStar.value;
-        });
-      } else {
-        dataArr = phoneListData.filter((item) => {
-          return item.rating >= +fourStar.value;
-        });
-      }
-      createPhoneCard(dataArr);
-    }
-  });
-
-  threeStar.addEventListener("change", () => {
-    if (threeStar.checked) {
-      dataArr = phoneListData.filter((item) => {
-        return item.rating >= +threeStar.value;
-      });
-      // console.log(dataArr)
-    }
-    createPhoneCard(dataArr);
-  });
+//function to sort data in descending
+function sortPopularity(data){
+  return data.sort((a, b) => {
+    return b.customer_rating - a.customer_rating
+  })
 }
-sortByRating();
 
-// let arr=phoneListData.filter(item=>item.mrp>10000)
-// console.log(arr);
+function getPriceRange(data, min = 0){
+  let minPrice = getMinPrice(data)
+  let maxPrice = getMaxPrice(data)
+
+  let stepSize = 4
+  let minValues = []
+  let maxValues = []
+
+  let stepValue = (maxPrice - minPrice)/ stepSize
+
+  for(let i = 0; i < stepSize; i++){
+    minValues[i] = Math.floor(min + i * stepValue)
+  }
+
+  for(let i = 0; i < stepSize; i++){
+    maxValues[i] = Math.floor(minValues[i] + stepValue)
+  }
+
+  const price = {
+    min: minValues,
+    max: maxValues
+  }
+
+  console.log(price)
+}
+
+// getPriceRange()
+
+function getMinPrice(data){
+  let min = calculateActualPrice(data[0].mrp, data[0].discount)
+  for(let i = 1; i < data.length; i++){
+    if(min > calculateActualPrice(data[i].mrp, data[i].discount)){
+      min = calculateActualPrice(data[i].mrp, data[i].discount)
+    }
+  }
+  return min
+}
+
+function getMaxPrice(data){
+  let max = calculateActualPrice(data[data.length - 1].mrp, data[data.length - 1].discount)
+  for(let i = 1; i < data.length; i++){
+    if(max < calculateActualPrice(data[i].mrp, data[i].discount)){
+      max = calculateActualPrice(data[i].mrp, data[i].discount)
+    }
+  }
+  return max
+}
+
+function readMinValueOnChange(data){
+  const minContainer = document.getElementById('price-min')
+  let min = 0
+  minContainer.addEventListener('change', () => {
+    min = minContainer.value
+    getPriceRange(data, min)
+  })
+}
+
+
+
+
+
+
+
+
+// let obj = [
+//   {
+//     mrp: 100,
+//     discount: 20,
+//   },
+//   {
+//     mrp: 68,
+//     discount: 15,
+//   },
+//   {
+//     mrp: 65,
+//     discount: 30,
+//   },
+//   {
+//     mrp: 76,
+//     discount: 10,
+//   },
+// ];
+
+// console.log(sortAsc(obj));
+
+// const p = priceFilter(obj, 65, 80)
+// console.log(p)
+
+// obj.forEach(item => console.log(calculateActualPrice(item.mrp, item.discount)))
+
+/////////////FILTERING SECTION////////////////////
+
+// let dataArr = [];
+
+// ///////Price sort////////
+// function priceSort(dataList) {
+//   let minVal = 0;
+//   let maxVal = 0;
+//   const minPrice = document.querySelector(".price-min");
+//   const maxPrice = document.querySelector(".price-max");
+
+//   minPrice.addEventListener("change", () => {
+//     getWithinRange(maxPrice, minPrice, dataList);
+//   });
+
+//   maxPrice.addEventListener("change", () => {
+//     getWithinRange(maxPrice, minPrice, dataList);
+//   });
+// }
+
+// function getWithinRange(max, min, data) {
+//   let minVal = +min.value;
+//   let maxVal = max.value !== "Max" ? +max.value : "Max";
+
+//   if (maxVal === "Max") {
+//     dataArr = data.filter((item) => {
+//       return calculateActualPrice(item.mrp, item.discount) >= minVal;
+//     });
+//   } else {
+//     dataArr = data.filter((item) => {
+//       return (
+//         calculateActualPrice(item.mrp, item.discount) >= minVal &&
+//         calculateActualPrice(item.mrp, item.discount) <= maxVal
+//       );
+//     });
+//   }
+//   createPhoneCard(dataArr);
+// }
+
+// //////Filter by brand/////
+// function brandSelection(dataList) {
+//   const inputBoxes = document.querySelectorAll(
+//     ".brand-checkbox input[type=checkbox]"
+//   );
+//   inputBoxes.forEach((input) => {
+//     input.addEventListener("change", function (e) {
+//       if (e.target.checked) {
+//         const data = dataList.filter((item) => {
+//           return item.brand === e.target.value;
+//         });
+//         dataArr.push(...data);
+//       } else {
+//         const checkedBox = document.querySelectorAll(
+//           ".brand-checkbox input[type=checkbox]:checked"
+//         );
+//         if (checkedBox.length) {
+//           dataArr = dataArr.filter((item) => item.brand !== e.target.value);
+//         } else {
+//           dataArr = dataList;
+//         }
+//       }
+
+//       createPhoneCard(dataArr);
+//     });
+//   });
+// }
+
+// //////Filter by Flipkart Assured///////
+// function flipkartAssuredSort(dataList) {
+//   const checkbox = document.getElementById("f-assured");
+
+//   checkbox.addEventListener("change", () => {
+//     if (checkbox.checked) {
+//       if (dataArr.length) {
+//         dataArr = dataArr.filter((item) => item.f_assured);
+//         // console.log(dataArr)
+//       } else {
+//         dataArr = dataList.filter((item) => item.f_assured);
+//         // console.log(dataArr)
+//       }
+//     }
+//     createPhoneCard(dataArr);
+//   });
+// }
+
+// ///////Filter by rating///////
+// function sortByRating(dataList) {
+//   const fourStar = document.getElementById("four-star");
+//   const threeStar = document.getElementById("three-star");
+
+//   fourStar.addEventListener("change", () => {
+//     if (fourStar.checked) {
+//       if (dataArr.length) {
+//         dataArr = dataArr.filter((item) => {
+//           return item.rating >= +fourStar.value;
+//         });
+//       } else {
+//         dataArr = dataList.filter((item) => {
+//           return item.rating >= +fourStar.value;
+//         });
+//       }
+//       createPhoneCard(dataArr);
+//     }
+//   });
+
+//   threeStar.addEventListener("change", () => {
+//     if (threeStar.checked) {
+//       dataArr = dataList.filter((item) => {
+//         return item.rating >= +threeStar.value;
+//       });
+//     }
+//     createPhoneCard(dataArr);
+//   });
+// }
+
+// function sorting(data) {
+//   const container = document.querySelectorAll(".sort");
+
+//   container.forEach((item) => {
+//     item.addEventListener("click", (e) => {
+//       const val = e.target.dataset.sort;
+//       if (val === "asc") {
+//         dataArr = data.sort((a, b) => {
+//           return (
+//             calculateActualPrice(a.mrp, a.discount) -
+//             calculateActualPrice(b.mrp, b.discount)
+//           );
+//         });
+//       }
+//       if (val === "desc") {
+//         dataArr = data.sort((a, b) => {
+//           return (
+//             calculateActualPrice(b.mrp, b.discount) -
+//             calculateActualPrice(a.mrp, a.discount)
+//           );
+//         });
+//       }
+//       if (val === "popularity") {
+//         dataArr = data.sort((a, b) => {
+//           return b.customer_rating - a.customer_rating;
+//         });
+//       }
+//       createPhoneCard(dataArr);
+//     });
+//   });
+// }
+
+// let a = 2600
+
+// console.log(10000 + Math.round(a/5000) * 5000)
+
+
+
+let obj = [
+  {
+    mrp: 100,
+    discount: 20,
+  },
+  {
+    mrp: 68,
+    discount: 15,
+  },
+  {
+    mrp: 65,
+    discount: 30,
+  },
+  {
+    mrp: 76,
+    discount: 10,
+  },
+];
+
+// console.log(getMinPrice(obj))
+// console.log('****')
+// obj.forEach(item => {
+//   console.log(calculateActualPrice(item.mrp, item.discount))
+// })
